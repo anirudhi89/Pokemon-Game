@@ -14,6 +14,7 @@ def choosePkmn():
     chosenKanto = False 
     chosenJohto = False
     chosenSinnoh = False
+    validInput = False
 
     #empty list of all three of the player's pokemon
     playerspokemon = []
@@ -31,6 +32,8 @@ def choosePkmn():
             playerspokemon.append(pokemonlistKanto[PickThree - 1])
             print("Your current pokemon are: ", playerspokemon, "\n")
             chosenKanto = True
+            if PickThree > 3:
+                chosenKanto = False
             PickThree = 0
         elif str(i) == str(pokemonlistJohto):
             print("Pick a Johto Region Starter Pokemon from the list below. You can only choose one. Enter the number you see next to the Pokemon you want. ")
@@ -40,10 +43,13 @@ def choosePkmn():
             PickThree = int(input("\nPick a Pokemon to use in battle! "))
             if PickThree > 3:
                 print("error - pick a pokemon from this list")
+                continue
             print("You have chosen " + i[PickThree - 1])
             playerspokemon.append(pokemonlistJohto[PickThree - 1])
             print("Your current pokemon are: ", playerspokemon, "\n")
             chosenJohto = True
+            if PickThree > 3:
+                chosenJohto = False
             PickThree = 0
             counter += 1
         elif str(i) == str(pokemonlistSinnoh):
@@ -58,10 +64,11 @@ def choosePkmn():
             playerspokemon.append(pokemonlistSinnoh[PickThree - 1])
             print("Your current pokemon are: ", playerspokemon, "\n")
             chosenSinnoh = True
+            if PickThree > 3:
+                chosenSinnoh = False
             PickThree = 0
             counter += 1
         if chosenKanto == True and chosenJohto == True and chosenSinnoh == True:
-            print("brek sequence worked")
             break
     print("The Pokemon you chose are: ", playerspokemon)
     print("ended")
