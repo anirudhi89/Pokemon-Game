@@ -1,0 +1,2 @@
+Future Ideas:
+- For all input, use strip() to automatically remove whitespace

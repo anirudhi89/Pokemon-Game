@@ -1,0 +1,1 @@
+This game is a text-based game (as of June 21). Because of this, your input is highly sensitive. Be sure to not have any extra spaces (either before or after)
