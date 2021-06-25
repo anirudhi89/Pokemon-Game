@@ -76,34 +76,37 @@ class User(object):
                     chosenSinnoh = False
                 PickThree = 0
                 counter += 1
-            if chosenKanto == True and chosenJohto == True and chosenSinnoh == True:
+            if chosenKanto is True and chosenJohto is True and chosenSinnoh == True:
                 break
-            else:
         print("The Pokemon you chose are: ", playerspokemon)
         print("ended")
-# WORKING UP TO HERE
 
-        mybattlepoke = ''
+
+        mybattlepoke = ''  # empty string, represents the pokemon used at the battle
         pokeindex = 5
 
-        while pokeindex > 2 :
-            pokeindex = input("\nNow pick ONE of these to use in battle: " + "#0 " + playerspokemon[0] + ", " + "#1 " + playerspokemon[1] + ", and " + "#2 " + playerspokemon[2] +
-            ". Enter the number...")
-            if pokeindex == 0 :
+        while pokeindex > 2:
+            pokeindex = int(input(
+                "\nNow pick ONE of these to use in battle: " + "#1 " + playerspokemon[0] + ", " + "#2 " +
+                playerspokemon[
+                    1] + ", and " + "#3 " + playerspokemon[2] +
+                ". Enter the number... "))
+            if pokeindex == 1:
                 mybattlepoke = playerspokemon[0]
-            elif pokeindex == 1 :
+            elif pokeindex == 2:
                 mybattlepoke = playerspokemon[1]
-            elif pokeindex == 2 :
+            elif pokeindex == 3:
                 mybattlepoke = playerspokemon[2]
             else:
-                print 'error : choose one from the list'
-            print mybattlepoke
-            print pokeindex
-        print "You have picked... " + mybattlepoke + "! Best of luck!"
+                print('error : choose one from the list')
+                continue
+            print(mybattlepoke)
+            print(pokeindex)
+        print("You have picked... " + mybattlepoke + "! Best of luck!")
         self.remainingpokemonlist = pokemonlist
         self.battlepokeuser = mybattlepoke
-
-
+# WORKING UP TO HERE
+x = 5
 class Computer(object):
     def __init__(self, opponentname):
         self.opponentname = opponentname
@@ -132,7 +135,7 @@ class Computer(object):
 
         self.compbattlepoke = computersbattlepoke
 
-        self.action = raw_input("What would you like to do, attack, heal, or switch? Type in all lowercase: ")
+        self.action = input("What would you like to do, attack, heal, or switch? Type in all lowercase: ")
 
     #calling function now
     #set_pokemon(object)
