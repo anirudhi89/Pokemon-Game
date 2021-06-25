@@ -28,10 +28,10 @@ class User(object):
         pokemonlistJohto = [Chikorita, Cyndaquil, Totodile]
         pokemonlistSinnoh = [Turtwig, Chimchar, Piplup]
 
-        listOfList = []
-        listOfList.append(pokemonlistKanto)
-        listOfList.append(pokemonlistJohto)
-        listOfList.append(pokemonlistSinnoh)
+        totalPkmn = []
+        totalPkmn.append(pokemonlistKanto)
+        totalPkmn.append(pokemonlistJohto)
+        totalPkmn.append(pokemonlistSinnoh)
 
         # since we need to prompt the user three times, making a counter variable
         counter = 1
@@ -44,7 +44,7 @@ class User(object):
         playerspokemon = []
         attributeplayerpoke = []
         PickThree = 1000  # index of pokemon
-        for i in listOfList:
+        for i in totalPkmn:
             if (str(i) == str(pokemonlistKanto)):
                 print(
                     "Pick a Kanto Region Starter Pokemon from the list below. You can only choose one. Enter the number you see next to the Pokemon you want. ")
@@ -139,6 +139,7 @@ class Computer(object):
         computersbattlepoke = ''
 
         counter = 1
+        integer = 0
         while counter < 4:
             if counter==1 :
                 integer = random.choice('012345')
