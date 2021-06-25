@@ -124,4 +124,3 @@ def choosePkmn():
     # self.battlepokeuser = mybattlepoke
 
 choosePkmn()
-

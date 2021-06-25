@@ -1,12 +1,11 @@
 class User(object):
     def __init__(self, myname):
         self.myname = myname
+    # add a dictionary for each pokemon's properties: of name, type, hp, attack, and defesne
+    # make HP, Attack and Defense all add up to 150 for simplicity
+    # ie:
 
     def list_pokemon(self):
-
-        # add a dictionary for each pokemon's properties: of name, type, hp, attack, and defesne
-        # make HP, Attack and Defense all add up to 150 for simplicity
-        # ie:
 
         # Kanto
         Bulbasaur = {'Name': 'Bulbasaur', 'Type': 'Grass', 'HP': 50, 'Attack': 48, 'Defense': 52}
@@ -44,6 +43,7 @@ class User(object):
         playerspokemon = []
         attributeplayerpoke = []
         PickThree = 1000  # index of pokemon
+
         for i in totalPkmn:
             if (str(i) == str(pokemonlistKanto)):
                 print(
@@ -130,13 +130,48 @@ class User(object):
         self.battlepokeuser = mybattlepoke
 # WORKING UP TO HERE
 x = 5
-class Computer(object):
+class Computer(User):
     def __init__(self, opponentname):
         self.opponentname = opponentname
     def set_pokemon(self):
-        import random
+        from random import *
         computerspokemon = []
         computersbattlepoke = ''
+
+        global compKanto
+        global compJohto
+        global compSinnoh
+
+        compsPkmn = []
+        attributeCompPkmn = []
+
+        compbattlepoke = ''  # empty string, represents the pokemon used at the battle
+
+        for i in totalPkmn:
+            if (str(i) == str(pokemonlistKanto)):
+                k = randint(0, 2)
+                compsPkmn.append(pokemonlistKanto[k].get('Name'))
+                attributeCompPkmn.append(pokemonlistKanto[k])
+                compKanto = True
+            elif (str(i) == str(pokemonlistJohto)):
+                j = randint(0, 2)
+                compsPkmn.append(pokemonlistJohto[j].get('Name'))
+                attributeCompPkmn.append((pokemonlistJohto[j]))
+                compJohto = True
+            elif (str(i) == str(pokemonlistSinnoh)):
+                s = randint(0, 2)
+                compsPkmn.append(pokemonlistSinnoh[s].get('Name'))
+                attributeCompPkmn.append(pokemonlistSinnoh[s])
+                compSinnoh = True
+        print("The opponent's Pokemon are", compsPkmn)
+
+        i = randint(0, 2)
+        compbattlepoke = compsPkmn[i]
+        print(f"The opponent chose {compbattlepoke}")
+
+
+
+
 
         counter = 1
         integer = 0
@@ -267,10 +302,10 @@ def userattacking():
         comptype = "Fire"
     if compbattlepoke in ['Polywag','Psyduck','Squirtle']:
         comptype = "Water"
-    print compbattlepoke
+    print(compbattlepoke)
 
-    print 'Your type is: ', mytype
-    print "Your opponent's type is: " + comptype
+    print('Your type is: ', mytype)
+    print("Your opponent's type is: " + comptype)
 
     if compbattlepoke == Bulbasaur:
         compHP = 60
