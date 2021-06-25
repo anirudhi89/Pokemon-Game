@@ -4,10 +4,29 @@ class User(object):
 
     def list_pokemon(self):
 
-        # letting user pick from list of available pokemon (one from each region)
-        pokemonlistKanto = ["Bulbasaur", "Charmander", "Squirtle"]
-        pokemonlistJohto = ["Chikorita", "Cyndaquil", "Totodile"]
-        pokemonlistSinnoh = ["Turtwig", "Chimchar", "Piplup"]
+        # add a dictionary for each pokemon's properties: of name, type, hp, attack, and defesne
+        # make HP, Attack and Defense all add up to 150 for simplicity
+        # ie:
+
+        # Kanto
+        Bulbasaur = {'Name': 'Bulbasaur', 'Type': 'Grass', 'HP': 50, 'Attack': 48, 'Defense': 52}
+        Charmander = {'Name': 'Charmander', 'Type': 'Fire', 'HP': 55, 'Attack': 46, 'Defense': 49}
+        Squirtle = {'Name': 'Squirtle', 'Type': 'Water', 'HP': 48, 'Attack': 52, 'Defense': 50}
+
+        # Johto
+        Chikorita = {'Name': 'Chikorita', 'Type': 'Grass', 'HP': 50, 'Attack': 48, 'Defense': 52}
+        Cyndaquil = {'Name': 'Cyndaquil', 'Type': 'Fire', 'HP': 55, 'Attack': 46, 'Defense': 49}
+        Totodile = {'Name': 'Totodile', 'Type': 'Water', 'HP': 48, 'Attack': 52, 'Defense': 50}
+
+        # Sinnoh
+        Turtwig = {'Name': 'Turtwig', 'Type': 'Grass', 'HP': 50, 'Attack': 48, 'Defense': 52}
+        Chimchar = {'Name': 'Chimchar', 'Type': 'Fire', 'HP': 55, 'Attack': 46, 'Defense': 49}
+        Piplup = {'Name': 'Piplup', 'Type': 'Water', 'HP': 48, 'Attack': 52, 'Defense': 50}
+
+        # List
+        pokemonlistKanto = [Bulbasaur, Charmander, Squirtle]
+        pokemonlistJohto = [Chikorita, Cyndaquil, Totodile]
+        pokemonlistSinnoh = [Turtwig, Chimchar, Piplup]
 
         listOfList = []
         listOfList.append(pokemonlistKanto)
@@ -19,7 +38,7 @@ class User(object):
         chosenKanto = False
         chosenJohto = False
         chosenSinnoh = False
-        validInput = False
+        # validInput = False
 
         # empty list of all three of the player's pokemon
         playerspokemon = []
@@ -28,59 +47,55 @@ class User(object):
             if (str(i) == str(pokemonlistKanto)):
                 print(
                     "Pick a Kanto Region Starter Pokemon from the list below. You can only choose one. Enter the number you see next to the Pokemon you want. ")
-                print("#1", i[0])
-                print("#2", i[1])
-                print("#3", i[2])
+                print("#1", pokemonlistKanto[0].get('Name'))
+                print("#2", pokemonlistKanto[1].get('Name'))
+                print("#3", pokemonlistKanto[2].get('Name'))
                 PickThree = int(input("\nPick a Pokemon to use in battle! "))
                 if PickThree > 3:
                     print("error - pick a pokemon from this list")
-                print("You have chosen " + i[PickThree - 1])
-                playerspokemon.append(pokemonlistKanto[PickThree - 1])
+                print("You have chosen " + i[PickThree - 1].get('Name'))
+                playerspokemon.append(pokemonlistKanto[PickThree - 1].get('Name'))
                 print("Your current pokemon are: ", playerspokemon, "\n")
                 chosenKanto = True
                 if PickThree > 3:
                     chosenKanto = False
                 PickThree = 0
-            elif str(i) == str(pokemonlistJohto):
+            elif (str(i) == str(pokemonlistJohto)):
                 print(
                     "Pick a Johto Region Starter Pokemon from the list below. You can only choose one. Enter the number you see next to the Pokemon you want. ")
-                print("#1", i[0])
-                print("#2", i[1])
-                print("#3", i[2])
+                print("#1", pokemonlistJohto[0].get('Name'))
+                print("#2", pokemonlistJohto[1].get('Name'))
+                print("#3", pokemonlistJohto[2].get('Name'))
                 PickThree = int(input("\nPick a Pokemon to use in battle! "))
                 if PickThree > 3:
                     print("error - pick a pokemon from this list")
-                    continue
-                print("You have chosen " + i[PickThree - 1])
-                playerspokemon.append(pokemonlistJohto[PickThree - 1])
+                print("You have chosen " + i[PickThree - 1].get('Name'))
+                playerspokemon.append(pokemonlistJohto[PickThree - 1].get('Name'))
                 print("Your current pokemon are: ", playerspokemon, "\n")
                 chosenJohto = True
                 if PickThree > 3:
                     chosenJohto = False
                 PickThree = 0
-                counter += 1
-            elif str(i) == str(pokemonlistSinnoh):
+            elif (str(i) == str(pokemonlistSinnoh)):
                 print(
-                    "Pick a Sinnoh Region Starter Pokemon from the list below. You can only choose one. Enter the number you see next to the Pokemon you want. ")
-                print("#1", i[0])
-                print("#2", i[1])
-                print("#3", i[2])
+                    "Pick a Kanto Region Starter Pokemon from the list below. You can only choose one. Enter the number you see next to the Pokemon you want. ")
+                print("#1", pokemonlistSinnoh[0].get('Name'))
+                print("#2", pokemonlistSinnoh[1].get('Name'))
+                print("#3", pokemonlistSinnoh[2].get('Name'))
                 PickThree = int(input("\nPick a Pokemon to use in battle! "))
                 if PickThree > 3:
                     print("error - pick a pokemon from this list")
-                print("You have chosen " + i[PickThree - 1])
-                playerspokemon.append(pokemonlistSinnoh[PickThree - 1])
+                print("You have chosen " + i[PickThree - 1].get('Name'))
+                playerspokemon.append(pokemonlistSinnoh[PickThree - 1].get('Name'))
                 print("Your current pokemon are: ", playerspokemon, "\n")
                 chosenSinnoh = True
                 if PickThree > 3:
                     chosenSinnoh = False
                 PickThree = 0
-                counter += 1
-            if chosenKanto is True and chosenJohto is True and chosenSinnoh == True:
+            if chosenKanto is True and chosenJohto is True and chosenSinnoh is True:
                 break
         print("The Pokemon you chose are: ", playerspokemon)
         print("ended")
-
 
         mybattlepoke = ''  # empty string, represents the pokemon used at the battle
         pokeindex = 5
@@ -102,6 +117,7 @@ class User(object):
                 continue
             print(mybattlepoke)
             print(pokeindex)
+            pokeindex = 0
         print("You have picked... " + mybattlepoke + "! Best of luck!")
         self.remainingpokemonlist = pokemonlist
         self.battlepokeuser = mybattlepoke

@@ -1,2 +1,4 @@
 Future Ideas:
 - For all input, use strip() to automatically remove whitespace
+- method generatepokemon():
+    -- for battling enemies, either battle starter pokemon, or end up battling these 'wild' pokemon
