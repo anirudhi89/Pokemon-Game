@@ -41,6 +41,7 @@ def choosePkmn():
 
     #empty list of all three of the player's pokemon
     playerspokemon = []
+    attributeplayerpoke = []
     PickThree = 1000 #index of pokemon
     for i in listOfList:
         if (str(i) == str(pokemonlistKanto)):
@@ -53,6 +54,7 @@ def choosePkmn():
                 print("error - pick a pokemon from this list")
             print("You have chosen " + i[PickThree - 1].get('Name'))
             playerspokemon.append(pokemonlistKanto[PickThree - 1].get('Name'))
+            attributeplayerpoke.append(pokemonlistKanto[PickThree -1])
             print("Your current pokemon are: ", playerspokemon, "\n")
             chosenKanto = True
             if PickThree > 3:
@@ -68,6 +70,7 @@ def choosePkmn():
                 print("error - pick a pokemon from this list")
             print("You have chosen " + i[PickThree - 1].get('Name'))
             playerspokemon.append(pokemonlistJohto[PickThree - 1].get('Name'))
+            attributeplayerpoke.append(pokemonlistJohto[PickThree - 1])
             print("Your current pokemon are: ", playerspokemon, "\n")
             chosenJohto = True
             if PickThree > 3:
@@ -83,6 +86,7 @@ def choosePkmn():
                 print("error - pick a pokemon from this list")
             print("You have chosen " + i[PickThree - 1].get('Name'))
             playerspokemon.append(pokemonlistSinnoh[PickThree - 1].get('Name'))
+            attributeplayerpoke.append(pokemonlistSinnoh[PickThree -1])
             print("Your current pokemon are: ", playerspokemon, "\n")
             chosenSinnoh = True
             if PickThree > 3:
@@ -91,9 +95,12 @@ def choosePkmn():
         if chosenKanto is True and chosenJohto is True and chosenSinnoh is True:
             break
     print("The Pokemon you chose are: ", playerspokemon)
-    print("ended")
-            
-            
+    print('Here\'s some more information: ')
+    for i in playerspokemon:
+        ind = playerspokemon.index(i)
+        print(playerspokemon[ind], attributeplayerpoke[ind])
+
+
     mybattlepoke = '' #empty string, represents the pokemon used at the battle
     pokeindex = 5
 
@@ -109,10 +116,8 @@ def choosePkmn():
         elif pokeindex == 3:
             mybattlepoke = playerspokemon[2]
         else:
-            print('error : choose one from the list')
+            print('Error : choose one from the list')
             continue
-        print(mybattlepoke)
-        print(pokeindex)
         pokeindex = 0
     print("You have picked... " + mybattlepoke + "! Best of luck!")
     # self.remainingpokemonlist = pokemonlist
