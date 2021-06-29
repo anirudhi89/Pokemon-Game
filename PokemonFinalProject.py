@@ -1,11 +1,11 @@
 class User(object):
     def __init__(self, myname):
         self.myname = myname
-    # add a dictionary for each pokemon's properties: of name, type, hp, attack, and defesne
-    # make HP, Attack and Defense all add up to 150 for simplicity
-    # ie:
 
     def list_pokemon(self):
+        # add a dictionary for each pokemon's properties: of name, type, hp, attack, and defesne
+        # make HP, Attack and Defense all add up to 150 for simplicity
+        # ie:
 
         # Kanto
         Bulbasaur = {'Name': 'Bulbasaur', 'Type': 'Grass', 'HP': 50, 'Attack': 48, 'Defense': 52}
@@ -134,7 +134,7 @@ class Computer(User):
     def __init__(self, opponentname):
         self.opponentname = opponentname
     def set_pokemon(self):
-        from random import *
+        import random
         computerspokemon = []
         computersbattlepoke = ''
 
