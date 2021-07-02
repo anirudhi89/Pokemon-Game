@@ -1,49 +1,67 @@
+from random import randint
+
+# add a dictionary for each pokemon's properties: of name, type, hp, attack, and defesne
+# make HP, Attack and Defense all add up to 150 for simplicity
+# ie:
+
+# Kanto
+Bulbasaur = {'Name': 'Bulbasaur', 'Type': 'Grass', 'HP': 50, 'Attack': 48, 'Defense': 52}
+Charmander = {'Name': 'Charmander', 'Type': 'Fire', 'HP': 55, 'Attack': 46, 'Defense': 49}
+Squirtle = {'Name': 'Squirtle', 'Type': 'Water', 'HP': 48, 'Attack': 52, 'Defense': 50}
+
+# Johto
+Chikorita = {'Name': 'Chikorita', 'Type': 'Grass', 'HP': 50, 'Attack': 48, 'Defense': 52}
+Cyndaquil = {'Name': 'Cyndaquil', 'Type': 'Fire', 'HP': 55, 'Attack': 46, 'Defense': 49}
+Totodile = {'Name': 'Totodile', 'Type': 'Water', 'HP': 48, 'Attack': 52, 'Defense': 50}
+
+# Sinnoh
+Turtwig = {'Name': 'Turtwig', 'Type': 'Grass', 'HP': 50, 'Attack': 48, 'Defense': 52}
+Chimchar = {'Name': 'Chimchar', 'Type': 'Fire', 'HP': 55, 'Attack': 46, 'Defense': 49}
+Piplup = {'Name': 'Piplup', 'Type': 'Water', 'HP': 48, 'Attack': 52, 'Defense': 50}
+
+# List
+pokemonlistKanto = [Bulbasaur, Charmander, Squirtle]
+pokemonlistJohto = [Chikorita, Cyndaquil, Totodile]
+pokemonlistSinnoh = [Turtwig, Chimchar, Piplup]
+
+totalPkmn = []
+totalPkmn.append(pokemonlistKanto)
+totalPkmn.append(pokemonlistJohto)
+totalPkmn.append(pokemonlistSinnoh)
+
+# since we need to prompt the user three times, making a counter variable
+counter = 1
+chosenKanto = False
+chosenJohto = False
+chosenSinnoh = False
+compKanto = False
+compJohto = False
+compSinnoh = False
+# validInput = False
+
+# empty list of all three of the player's pokemon
+playerspokemon = []
+attributeplayerpoke = [] #list of dictionary
+
+compsPkmn = []
+attributeCompPkmn = []
+
+
+mybattlepoke = ''
+compbattlepoke = ''  # empty string, represents the pokemon used at the battle
+
+mytype = ''
+comptype = ''
+
 class User(object):
     def __init__(self, myname):
         self.myname = myname
 
     def list_pokemon(self):
-        # add a dictionary for each pokemon's properties: of name, type, hp, attack, and defesne
-        # make HP, Attack and Defense all add up to 150 for simplicity
-        # ie:
-
-        # Kanto
-        Bulbasaur = {'Name': 'Bulbasaur', 'Type': 'Grass', 'HP': 50, 'Attack': 48, 'Defense': 52}
-        Charmander = {'Name': 'Charmander', 'Type': 'Fire', 'HP': 55, 'Attack': 46, 'Defense': 49}
-        Squirtle = {'Name': 'Squirtle', 'Type': 'Water', 'HP': 48, 'Attack': 52, 'Defense': 50}
-
-        # Johto
-        Chikorita = {'Name': 'Chikorita', 'Type': 'Grass', 'HP': 50, 'Attack': 48, 'Defense': 52}
-        Cyndaquil = {'Name': 'Cyndaquil', 'Type': 'Fire', 'HP': 55, 'Attack': 46, 'Defense': 49}
-        Totodile = {'Name': 'Totodile', 'Type': 'Water', 'HP': 48, 'Attack': 52, 'Defense': 50}
-
-        # Sinnoh
-        Turtwig = {'Name': 'Turtwig', 'Type': 'Grass', 'HP': 50, 'Attack': 48, 'Defense': 52}
-        Chimchar = {'Name': 'Chimchar', 'Type': 'Fire', 'HP': 55, 'Attack': 46, 'Defense': 49}
-        Piplup = {'Name': 'Piplup', 'Type': 'Water', 'HP': 48, 'Attack': 52, 'Defense': 50}
-
-        # List
-        pokemonlistKanto = [Bulbasaur, Charmander, Squirtle]
-        pokemonlistJohto = [Chikorita, Cyndaquil, Totodile]
-        pokemonlistSinnoh = [Turtwig, Chimchar, Piplup]
-
-        totalPkmn = []
-        totalPkmn.append(pokemonlistKanto)
-        totalPkmn.append(pokemonlistJohto)
-        totalPkmn.append(pokemonlistSinnoh)
-
-        # since we need to prompt the user three times, making a counter variable
-        counter = 1
-        chosenKanto = False
-        chosenJohto = False
-        chosenSinnoh = False
-        # validInput = False
-
-        # empty list of all three of the player's pokemon
-        playerspokemon = []
-        attributeplayerpoke = []
-        PickThree = 1000  # index of pokemon
-
+        global chosenKanto
+        global chosenJohto
+        global chosenSinnoh
+        global mybattlepoke
         for i in totalPkmn:
             if (str(i) == str(pokemonlistKanto)):
                 print(
@@ -128,24 +146,18 @@ class User(object):
         print("You have picked... " + mybattlepoke + "! Best of luck!")
         self.remainingpokemonlist = pokemonlist
         self.battlepokeuser = mybattlepoke
-# WORKING UP TO HERE
-x = 5
-class Computer(User):
+        return mybattlepoke
+
+class Computer(object):
     def __init__(self, opponentname):
         self.opponentname = opponentname
     def set_pokemon(self):
-        import random
         computerspokemon = []
         computersbattlepoke = ''
-
         global compKanto
         global compJohto
         global compSinnoh
-
-        compsPkmn = []
-        attributeCompPkmn = []
-
-        compbattlepoke = ''  # empty string, represents the pokemon used at the battle
+        global compbattlepoke
 
         for i in totalPkmn:
             if (str(i) == str(pokemonlistKanto)):
@@ -168,38 +180,12 @@ class Computer(User):
         i = randint(0, 2)
         compbattlepoke = compsPkmn[i]
         print(f"The opponent chose {compbattlepoke}")
-
-
-
-
-
-        counter = 1
-        integer = 0
-        while counter < 4:
-            if counter==1 :
-                integer = random.choice('012345')
-            elif counter==2 :
-                integer = random.choice('01234')
-            elif counter==3 :
-                integer = random.choice('0123')
-            intt = int(integer)
-            computerspokemon.append(pokemonlist[intt])
-            pokemonlist.pop(intt)
-            counter += 1
-
-        integer2 = random.choice('012')
-        intt2 = int(integer2)
-        computersbattlepoke = computerspokemon[intt2]
-        print "The computer has drafted " + ', '.join(computerspokemon) + " and will use ", computersbattlepoke
-
-        self.compbattlepoke = computersbattlepoke
-
-        self.action = input("What would you like to do, attack, heal, or switch? Type in all lowercase: ")
-
+        self.compbattlepoke = compbattlepoke
+        return compbattlepoke
     #calling function now
     #set_pokemon(object)
 
-
+# WORKING UP TO HERE
 class Pokemon(object):
     def __init__(self, name, HP, AP, type):
         self.name = name
@@ -253,47 +239,60 @@ class Fire(Pokemon):
 
 
 def userattacking():
-    mybattlepoke = ""
-    mybattlepoke = user.battlepokeuser
-    
-     
-    if mybattlepoke in ['Bulbasaur','Bellsprout','Oddish']:
+    global mybattlepoke, mytype
+    global compbattlepoke, comptype
+    global myAP, myHP
+    global compAP, compHP
+
+    if mybattlepoke in ['Bulbasaur','Chikorita','Turtwig']:
         mytype = "Grass" 
-    if mybattlepoke in ['Charmander','Ninetails','Ponyta']:
+    if mybattlepoke in ['Charmander','Cyndaquil','Chimchar']:
         mytype = "Fire"
-    if mybattlepoke in ['Polywag','Psyduck','Squirtle']:
+    if mybattlepoke in ['Squirtle','Totodile','Piplup']:
         mytype = "Water"
         
 
-    if mybattlepoke == Bulbasaur:
-        myHP = 60
-    if mybattlepoke == Bellsprout:
-        myHP = 40
-    if mybattlepoke == Oddish or Polywag:
-        myHP = 50
-    if mybattlepoke == Charmander:
-        myHP = 65
-    if mybattlepoke == Ninetails:
-        myHP = 30
-    if mybattlepoke == Ponyta:
-        myHP = 40
-    if mybattlepoke == Squirtle:
-        myHP = 80
-    if mybattlepoke == Psyduck:
-        myHP = 70
+    if mybattlepoke == "Bulbasaur":
+        myHP = Bulbasaur.get('HP')
+        myAP = Bulbasaur.get('AP')
+    if mybattlepoke == 'Chikorita':
+        myHP = Chikorita.get('HP')
+        myAP = Chikorita.get('AP')
+    if mybattlepoke == 'Turtwig':
+        myHP = Turtwig.get('HP')
+        myAP = Turtwig.get('AP')
+    if mybattlepoke == 'Charmander':
+        myHP = Charmander.get('HP')
+        myAP = Charmander.get('AP')
+    if mybattlepoke == 'Cyndaquil':
+        myHP = Cyndaquil.get('HP')
+        myAP = Cyndaquil.get('AP')
+    if mybattlepoke == 'Chimchar':
+        myHP = Chimchar.get('HP')
+        myAP = Cyndaquil.get('AP')
+    if mybattlepoke == 'Squirtle':
+        myHP = Squirtle.get('HP')
+        myAP = Squirtle.get('AP')
+    if mybattlepoke == 'Totodile':
+        myHP = Totodile.get('HP')
+        myAP = Totodile.get('AP')
+    if mybattlepoke == 'Piplup':
+        myHP = Piplup.get('HP')
+        myAP = Piplup.get('AP')
 
-    if mybattlepoke == Bulbasaur or Psyduck:
-        myAP = 40
-    if mybattlepoke == Bellsprout:
-        myAP = 60
-    if mybattlepoke == Ninetails or Polywag or Oddish:
-        myAP = 50
-    if mybattlepoke == Charmander:
-        myAP = 70
-    if mybattlepoke == Ponyta:
-        myAP = 60
-    if mybattlepoke == Squirtle:
-        myAP = 20
+
+    # if mybattlepoke == Bulbasaur or Psyduck:
+    #     myAP = 40
+    # if mybattlepoke == Bellsprout:
+    #     myAP = 60
+    # if mybattlepoke == Ninetails or Polywag or Oddish:
+    #     myAP = 50
+    # if mybattlepoke == Charmander:
+    #     myAP = 70
+    # if mybattlepoke == Ponyta:
+    #     myAP = 60
+    # if mybattlepoke == Squirtle:
+    #     myAP = 20
 
     compbattlepoke = computer.compbattlepoke
     if compbattlepoke in ['Bulbasaur','Bellsprout','Oddish']:
@@ -307,35 +306,63 @@ def userattacking():
     print('Your type is: ', mytype)
     print("Your opponent's type is: " + comptype)
 
-    if compbattlepoke == Bulbasaur:
-        compHP = 60
-    if compbattlepoke == Bellsprout:
-        compHP = 40
-    if compbattlepoke == Oddish or Polywag:
-        compHP = 50
-    if compbattlepoke == Charmander:
-        compHP = 25
-    if compbattlepoke == Ninetails:
-        compHP = 30
-    if compbattlepoke == Ponyta:
-        compHP = 40
-    if compbattlepoke == Squirtle:
-        compHP = 80
-    if compbattlepoke == Psyduck:
-        compHP = 70
+    if compbattlepoke == "Bulbasaur":
+        compHP = Bulbasaur.get('HP')
+        compAP = Bulbasaur.get('AP')
+    if compbattlepoke == 'Chikorita':
+        compHP = Chikorita.get('HP')
+        compAP = Chikorita.get('AP')
+    if compbattlepoke == 'Turtwig':
+        compHP = Turtwig.get('HP')
+        compAP = Turtwig.get('AP')
+    if compbattlepoke == 'Charmander':
+        compHP = Charmander.get('HP')
+        compAP = Charmander.get('AP')
+    if compbattlepoke == 'Cyndaquil':
+        compHP = Cyndaquil.get('HP')
+        compAP = Cyndaquil.get('AP')
+    if compbattlepoke == 'Chimchar':
+        compHP = Chimchar.get('HP')
+        compHP = Cyndaquil.get('AP')
+    if compbattlepoke == 'Squirtle':
+        compHP = Squirtle.get('HP')
+        compAP = Squirtle.get('AP')
+    if compbattlepoke == 'Totodile':
+        compHP = Totodile.get('HP')
+        compAP = Totodile.get('AP')
+    if compbattlepoke == 'Piplup':
+        compHP = Piplup.get('HP')
+        compAP = Piplup.get('AP')
 
-    if compbattlepoke == Bulbasaur or Psyduck:
-        compAP = 40
-    if compbattlepoke == Bellsprout:
-        compAP = 60
-    if compbattlepoke == Ninetails or Polywag or Oddish:
-        compAP = 50
-    if compbattlepoke == Charmander:
-        compAP = 70
-    if compbattlepoke == Ponyta:
-        compAP = 60
-    if compbattlepoke == Squirtle:
-        compAP = 50
+    # if compbattlepoke == Bulbasaur:
+    #     compHP = 60
+    # if compbattlepoke == Bellsprout:
+    #     compHP = 40
+    # if compbattlepoke == Oddish or Polywag:
+    #     compHP = 50
+    # if compbattlepoke == Charmander:
+    #     compHP = 25
+    # if compbattlepoke == Ninetails:
+    #     compHP = 30
+    # if compbattlepoke == Ponyta:
+    #     compHP = 40
+    # if compbattlepoke == Squirtle:
+    #     compHP = 80
+    # if compbattlepoke == Psyduck:
+    #     compHP = 70
+
+    # if compbattlepoke == Bulbasaur or Psyduck:
+    #     compAP = 40
+    # if compbattlepoke == Bellsprout:
+    #     compAP = 60
+    # if compbattlepoke == Ninetails or Polywag or Oddish:
+    #     compAP = 50
+    # if compbattlepoke == Charmander:
+    #     compAP = 70
+    # if compbattlepoke == Ponyta:
+    #     compAP = 60
+    # if compbattlepoke == Squirtle:
+    #     compAP = 50
 
     grassattacks_dict = {
         'Leaf Storm' : 130,
@@ -354,9 +381,9 @@ def userattacking():
         }
 
     if (mytype == comptype and comptype == "Fire"):
-        print "Entering same Fire"
-        print fireattacks_dict
-        mymove = raw_input("What move do you want from this ")
+        print("Entering same Fire")
+        print(fireattacks_dict)
+        mymove = input("What move do you want from this ")
         if mymove == 'Ember':
             damage = 0
             if fireattacks_dict['Ember'] >= myAP:
@@ -366,12 +393,12 @@ def userattacking():
 
             compHP = compHP - damage
             if compHP <= 0:
-                print "Computer Pokemon has fainted. Now, you have won. Computer will switch now."
+                print("Computer Pokemon has fainted. Now, you have won. Computer will switch now.")
             if compHP > 0:
-                print "Computer Pokemon was hit.. Now it is Computer's turn"                    
-            print "Pokemon\tHP\n remaining"
-            print str(compbattlepoke) + "\t" + str(compHP)
-            print str(mybattlepoke) + "\t" + str(myHP)
+                print("Computer Pokemon was hit.. Now it is Computer's turn")
+            print("Pokemon\tHP\n remaining")
+            print(str(compbattlepoke) + "\t" + str(compHP)
+            print(str(mybattlepoke) + "\t" + str(myHP))
 
 
         if mymove == 'Fire Punch':
@@ -948,7 +975,7 @@ def userattacking():
                 print "This attack failed."
             print "Pokemon\tHP\n remaining"
             print str(compbattlepoke) + "\t" + str(compHP)
-            print str(mybattlepoke) + "\t" + str(myHP)
+            print(str(mybattlepoke) + "\t" + str(myHP))
 
 
 
@@ -983,19 +1010,19 @@ print "Good luck!\n"
 
 #getting user name and opponent name
 
-myname = raw_input("What is your name? ")
+myname = input("What is your name? ")
 user = User(myname)
 user.list_pokemon()
 
 #more initialization
-opponentname = raw_input("What is your opponent's name? ")
-print "\nReady? You, " + myname + " are going against the world-renowned Python Pokemoner, " + opponentname + "!\n"
+opponentname = input("What is your opponent's name? ")
+print("\nReady? You, " + myname + " are going against the world-renowned Python Pokemoner, " + opponentname + "!\n")
 
 computer=Computer(opponentname)
 computer.set_pokemon()
 
 # let the game begin
-print 'starting game'
+print('starting game')
 continuegame = 1
 
 while continuegame == 1:
@@ -1003,4 +1030,4 @@ while continuegame == 1:
     #computerattacking()
     continuegame=input("Continue ? 1:YES 0:No ")
     
-print "Ending game"
+print("Ending game")

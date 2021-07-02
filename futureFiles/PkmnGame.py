@@ -168,15 +168,25 @@ def compChose():
 
     return compbattlepoke
 
+def usrAttacks():
+    f = 0
+
+def enemyAttack():
+    m = 0
+
+
 def battle():
     user = youChose()
     enemy = compChose()
-    print("You, " + user, "encountered a " + enemy)
+    print("Your Pokemon, a " + user, "encountered a " + enemy)
+    if user == "Bulbasaur":
+        myHP = Bulbasaur.get('HP')
+        print(myHP)
     return enemy
-
 
 def runGame():
     battle()
+
 
 
 runGame()
